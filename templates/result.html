@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Diagnosis Result{% endblock %}
+
+{% block content %}
+<div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-10">
+    <div class="p-8">
+        <h1 class="text-2xl font-bold mb-6 text-center text-gray-800">Diagnosis Result</h1>
+        <p class="text-center text-lg mb-6">
+            The diagnosis is: 
+            <span class="font-bold {% if result == 'Positive' %}text-red-600{% else %}text-green-600{% endif %}">
+                {{ result }}
+            </span>
+        </p>
+        <div class="text-center">
+            <a href="{{ url_for('home') }}" class="inline-block py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Back to Diagnosis Form
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
