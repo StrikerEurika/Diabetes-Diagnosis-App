@@ -2,6 +2,7 @@ from flask import Flask, send_file, send_from_directory, render_template, reques
 from routes.main_routes import main_bp
 import numpy as np
 import joblib, os, pickle, jsonify
+import pandas as pd
 
 # Create an instance of the Flask class
 app = Flask(__name__)
@@ -29,19 +30,32 @@ def predict():
         name = request.form['name']
         age = float(request.form['age'])
         gender = int(request.form['gender'])
-        systolic = float(request.form['systolic'])
-        diastolic = float(request.form['diastolic'])
+        systolic_bp = float(request.form['systolic_bp'])
+        diastolic_bp = float(request.form['diastolic_bp'])
         glucose = float(request.form['glucose'])
         bmi = float(request.form['bmi'])
         family_diabetes = int(request.form['family_diabetes'])
-        hypertension = int(request.form['hypertension'])
+        hypertensive = int(request.form['hypertensive'])
 
         # Make a prediction using the model
-        input_data = np.array([[age, gender, systolic, diastolic, glucose, bmi, family_diabetes, hypertension]])
-        prediction = model.predict(input_data)[0]
-
+        input_data = pd.DataFrame({
+            'age': [age],
+            'gender': [gender],
+            'systolic_bp': [systolic_bp], 
+            'diastolic_bp': [diastolic_bp],
+            'glucose': [glucose],
+            'bmi': [bmi],
+            'family_diabetes': [family_diabetes],
+            'hypertensive': [hypertensive],
+        })
+        prediction = model.predict(input_data)
+        # input_data = pd.DataFrame()
+        
+        # Convert the prediction to a string
+        prediction_str = 'Positive' if prediction == 1 else 'Negative'
+        
         # Return the prediction as a JSON response
-        return render_template('result.html', result=prediction, name=name)
+        return render_template('result.html', result=prediction_str, name=name)
 
     return render_template('index.html')
 

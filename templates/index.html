@@ -48,26 +48,26 @@
   </div>
   <!-- systolic blood pressure -->
   <div class="mb-4">
-    <label class="block text-gray-700 text-sm font-bold mb-2" for="systolic"
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="systolic_bp"
       >Systolic:</label
     >
     <input
       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
       type="text"
-      name="systolic"
+      name="systolic_bp"
       required
       oninput="this.value = this.value.replace(/[^0-9.]/g, '')"
     />
   </div>
   <!-- diastolic blood pressure -->
   <div class="mb-4">
-    <label class="block text-gray-700 text-sm font-bold mb-2" for="diastolic"
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="diastolic_bp"
       >Diastolic:</label
     >
     <input
       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
       type="text"
-      name="diastolic"
+      name="diastolic_bp"
       required
       oninput="this.value = this.value.replace(/[^0-9.]/g, '')"
     />
@@ -116,14 +116,14 @@
       <option value="0">No</option>
     </select>
   </div>
-  <!-- hypertension -->
+  <!-- hypertensive -->
   <div class="mb-4">
-    <label class="block text-gray-700 text-sm font-bold mb-2" for="hypertension"
-      >Hypertension:</label
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="hypertensive"
+      >Hypertensive:</label
     >
     <select
       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-      name="hypertension"
+      name="hypertensive"
       required
     >
       <option value="" disabled selected>Select</option>
