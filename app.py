@@ -1,8 +1,15 @@
 from flask import Flask, send_file, send_from_directory, render_template, request
 from routes.main_routes import main_bp
 import numpy as np
-import joblib, os, pickle, jsonify
+import joblib, pickle, jsonify
 import pandas as pd
+from dotenv import load_dotenv
+import os
+
+# 
+load_dotenv()  # Load environment variables from .env file
+secret_key = os.getenv("SECRET_KEY")
+print(secret_key)
 
 # Create an instance of the Flask class
 app = Flask(__name__)
